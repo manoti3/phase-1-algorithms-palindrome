@@ -23,3 +23,28 @@ if (require.main === module) {
 }
 
 module.exports = isPalindrome;
+function isPalindrome(str) {
+  // Remove any non-alphabet characters and convert to lowercase
+  str = str.replace(/[^a-z]/g, '').toLowerCase();
+
+  // Initialize two pointers, one at the beginning and one at the end
+  let left = 0;
+  let right = str.length - 1;
+
+  // Compare characters while moving the pointers towards each other
+  while (left < right) {
+    if (str[left] !== str[right]) {
+      return false; // If characters don't match, it's not a palindrome
+    }
+    left++;
+    right--;
+  }
+
+  return true; // If the loop completes, it's a palindrome
+}
+
+// Test cases
+console.log(isPalindrome("madam"));  // true
+console.log(isPalindrome("robot"));  // false
+console.log(isPalindrome("racecar")); // true
+console.log(isPalindrome("hello"));   // false
